@@ -1,0 +1,15 @@
+# Project Specific
+known_faces/
+
+# Python environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# IDEs
+.vscode/
+.idea/
