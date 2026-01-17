@@ -4,8 +4,6 @@ import numpy as np
 import cv2
 from datetime import datetime
 import face_recognition
-
-# Models path setup
 os.environ['FACE_RECOGNITION_MODELS_PATH'] = r'F:\Web development\python\.venv\Lib\site-packages\face_recognition_models\models'
 
 # Settings
@@ -82,7 +80,7 @@ while True:
     for encodeFace, faceLoc, landmarks in zip(encodesCurFrame, facesCurFrame, face_landmarks_list):
         faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
         
-        # Improvement 1: Safety Check for empty distances
+        # Safety Check for empty distances
         if len(faceDis) == 0:
             continue
 
@@ -102,7 +100,7 @@ while True:
                     marked_names = [line.split(',')[0] for line in f.readlines()]
                 is_already_marked = name in marked_names
 
-            # Improvement 2: Debounced Blink Trigger
+            # Debounced Blink Trigger
             if ear < 0.21 and not is_already_marked and blink_counter == 0:
                 markAttendance(name)
                 is_already_marked = True
